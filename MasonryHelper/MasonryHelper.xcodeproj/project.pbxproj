@@ -15,7 +15,6 @@
 		00821DB11B6939DD00362DC8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00821DAF1B6939DD00362DC8 /* LaunchScreen.xib */; };
 		00821DBD1B6939DD00362DC8 /* MasonryHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00821DBC1B6939DD00362DC8 /* MasonryHelperTests.m */; };
 		00821DC91B693BDC00362DC8 /* NSArray+MASHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00821DC81B693BDC00362DC8 /* NSArray+MASHelper.m */; };
-		00821DCC1B693BE600362DC8 /* UIView+MASHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00821DCB1B693BE600362DC8 /* UIView+MASHelper.m */; };
 		BAE7B2CBB33FA03DC7B655AF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BF741CEB1CFB3C7E19B43C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -45,8 +44,6 @@
 		00821DBC1B6939DD00362DC8 /* MasonryHelperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasonryHelperTests.m; sourceTree = "<group>"; };
 		00821DC71B693BDC00362DC8 /* NSArray+MASHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASHelper.h"; sourceTree = "<group>"; };
 		00821DC81B693BDC00362DC8 /* NSArray+MASHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASHelper.m"; sourceTree = "<group>"; };
-		00821DCA1B693BE600362DC8 /* UIView+MASHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MASHelper.h"; sourceTree = "<group>"; };
-		00821DCB1B693BE600362DC8 /* UIView+MASHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MASHelper.m"; sourceTree = "<group>"; };
 		00821DCD1B693C4200362DC8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6F0099B33F98B408EA8D4275 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CB0652FB006C39CF7EB35D38 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,8 +137,6 @@
 			children = (
 				00821DC71B693BDC00362DC8 /* NSArray+MASHelper.h */,
 				00821DC81B693BDC00362DC8 /* NSArray+MASHelper.m */,
-				00821DCA1B693BE600362DC8 /* UIView+MASHelper.h */,
-				00821DCB1B693BE600362DC8 /* UIView+MASHelper.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -302,7 +297,6 @@
 				00821DA61B6939DD00362DC8 /* AppDelegate.m in Sources */,
 				00821DC91B693BDC00362DC8 /* NSArray+MASHelper.m in Sources */,
 				00821DA31B6939DD00362DC8 /* main.m in Sources */,
-				00821DCC1B693BE600362DC8 /* UIView+MASHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

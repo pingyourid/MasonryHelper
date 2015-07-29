@@ -17,7 +17,7 @@
         return;
     }
 
-    UIView *tempSuperView = [self hj_commonSuperviewOfViews];
+    UIView *tempSuperView = [self mas_commonSuperviewOfViews];
     if (axisType == AxisTypeHorizon) {
         UIView *prev;
         for (int i = 0; i < self.count; i++) {
@@ -64,7 +64,7 @@
         return;
     }
     
-    UIView *tempSuperView = [self hj_commonSuperviewOfViews];
+    UIView *tempSuperView = [self mas_commonSuperviewOfViews];
     if (axisType == AxisTypeHorizon) {
         UIView *prev;
         for (int i = 0; i < self.count; i++) {
@@ -109,7 +109,7 @@
     }
 }
 
-- (UIView *)hj_commonSuperviewOfViews
+- (UIView *)mas_commonSuperviewOfViews
 {
     UIView *commonSuperview = nil;
     UIView *previousView = nil;
@@ -117,7 +117,7 @@
         if ([object isKindOfClass:[UIView class]]) {
             UIView *view = (UIView *)object;
             if (previousView) {
-                commonSuperview = [view hj_commonSuperviewWithView:commonSuperview];
+                commonSuperview = [view mas_closestCommonSuperview:commonSuperview];
             } else {
                 commonSuperview = view;
             }
