@@ -7,7 +7,6 @@
 //
 
 #import "NSArray+MASHelper.h"
-#import "UIView+MASHelper.h"
 
 @implementation NSArray (MASHelper)
 
@@ -17,11 +16,11 @@
         return;
     }
 
-    UIView *tempSuperView = [self mas_commonSuperviewOfViews];
+    MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
     if (axisType == AxisTypeHorizon) {
-        UIView *prev;
+        MAS_VIEW *prev;
         for (int i = 0; i < self.count; i++) {
-            UIView *v = [self objectAtIndex:i];
+            MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
               if (prev) {
                   make.left.equalTo(prev.right).offset(paddingSpace);
@@ -38,9 +37,9 @@
         }
     }
     else {
-        UIView *prev;
+        MAS_VIEW *prev;
         for (int i = 0; i < self.count; i++) {
-            UIView *v = [self objectAtIndex:i];
+            MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
                     make.top.equalTo(prev.bottom).offset(paddingSpace);
@@ -64,11 +63,11 @@
         return;
     }
     
-    UIView *tempSuperView = [self mas_commonSuperviewOfViews];
+    MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
     if (axisType == AxisTypeHorizon) {
-        UIView *prev;
+        MAS_VIEW *prev;
         for (int i = 0; i < self.count; i++) {
-            UIView *v = [self objectAtIndex:i];
+            MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
                     CGFloat offset = (1-(i/((CGFloat)self.count-1)))*itemLength;
@@ -87,9 +86,9 @@
         }
     }
     else {
-        UIView *prev;
+        MAS_VIEW *prev;
         for (int i = 0; i < self.count; i++) {
-            UIView *v = [self objectAtIndex:i];
+            MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
                     CGFloat offset = (1-(i/((CGFloat)self.count-1)))*itemLength;
@@ -109,13 +108,13 @@
     }
 }
 
-- (UIView *)mas_commonSuperviewOfViews
+- (MAS_VIEW *)mas_commonSuperviewOfViews
 {
-    UIView *commonSuperview = nil;
-    UIView *previousView = nil;
+    MAS_VIEW *commonSuperview = nil;
+    MAS_VIEW *previousView = nil;
     for (id object in self) {
-        if ([object isKindOfClass:[UIView class]]) {
-            UIView *view = (UIView *)object;
+        if ([object isKindOfClass:[MAS_VIEW class]]) {
+            MAS_VIEW *view = (MAS_VIEW *)object;
             if (previousView) {
                 commonSuperview = [view mas_closestCommonSuperview:commonSuperview];
             } else {
