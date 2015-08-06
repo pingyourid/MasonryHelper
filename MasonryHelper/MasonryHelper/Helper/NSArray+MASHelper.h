@@ -6,29 +6,31 @@
 //  Copyright (c) 2015年 bibibi. All rights reserved.
 //
 
-typedef NS_ENUM(NSUInteger, AxisType) {
-    AxisTypeHorizon,
-    AxisTypeVertical
+typedef NS_ENUM(NSUInteger, MASAxisType) {
+    MASAxisTypeHorizon,
+    MASAxisTypeVertical
 };
 
 @interface NSArray (MASHelper)
 
 /**
- *  根据固定间隙均匀分布
+ *  distribute with fixed spaceing
  *
- *  @param axisType     水平/垂直
- *  @param paddingSpace 固定间隙
- *  @param leadSpacing  头/尾间隔
+ *  @param axisType     horizon/vertical
+ *  @param paddingSpace space
+ *  @param leadSpacing  head
+ *  @param tailSpacing  tail
  */
-- (void)mas_distributeViewsAlongAxis:(AxisType)axisType withFixedSpacing:(CGFloat)paddingSpace withLeadSpacing:(CGFloat)leadSpacing;
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedSpacing:(CGFloat)paddingSpace leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
 
 /**
- *  根据固定物件宽度均匀分布
+ *  distribute with fixed item size
  *
- *  @param axisType    水平/垂直
- *  @param itemLength  物件宽度
- *  @param leadSpacing 头/尾间隔
+ *  @param axisType    horizon/vertical
+ *  @param itemLength  item size
+ *  @param leadSpacing head
+ *  @param tailSpacing  tail
  */
-- (void)mas_distributeViewsAlongAxis:(AxisType)axisType withFixedItemLength:(CGFloat)itemLength withLeadSpacing:(CGFloat)leadSpacing;
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)itemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
 
 @end

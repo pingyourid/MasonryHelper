@@ -19,59 +19,57 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    UIView *greenView = UIView.new;
-    greenView.backgroundColor = UIColor.greenColor;
-    greenView.layer.borderColor = UIColor.blackColor.CGColor;
-    greenView.layer.borderWidth = 2;
-    [self.view addSubview:greenView];
-
-    UIView *redView = UIView.new;
-    redView.backgroundColor = UIColor.redColor;
-    redView.layer.borderColor = UIColor.blackColor.CGColor;
-    redView.layer.borderWidth = 2;
-    [self.view addSubview:redView];
-
-    UIView *blueView = UIView.new;
-    blueView.backgroundColor = UIColor.blueColor;
-    blueView.layer.borderColor = UIColor.blackColor.CGColor;
-    blueView.layer.borderWidth = 2;
-    [self.view addSubview:blueView];
-
-    NSArray *arr = @[ greenView, redView, blueView ];
-
-    //垂直方向定view宽度
-    [arr mas_distributeViewsAlongAxis:AxisTypeVertical withFixedItemLength:50 withLeadSpacing:10];
-    [arr makeConstraints:^(MASConstraintMaker *make) {
-      make.left.equalTo(@0);
-      make.width.equalTo(@60);
-    }];
-
-    //水平方向定view宽度
-    //    [arr mas_distributeViewsAlongAxis:AxisTypeHorizon withFixedItemLength:50 withLeadSpacing:10];
-    //    [arr makeConstraints:^(MASConstraintMaker *make) {
-    //        make.top.equalTo(self.view.top);
-    //        make.height.equalTo(@60);
-    //    }];
-
-    //垂直方向定间距
-    //    [arr mas_distributeViewsAlongAxis:AxisTypeVertical withFixedSpacing:30 withLeadSpacing:0];
-    //    [arr makeConstraints:^(MASConstraintMaker *make) {
-    //        make.left.equalTo(@0);
-    //        make.width.equalTo(@60);
-    //    }];
-
-    //水平方向定间距
-    //    [arr mas_distributeViewsAlongAxis:AxisTypeHorizon withFixedSpacing:30 withLeadSpacing:0];
-    //    [arr makeConstraints:^(MASConstraintMaker *make) {
-    //        make.top.equalTo(self.view.top);
-    //        make.height.equalTo(@60);
-    //    }];
+    NSMutableArray *arr = @[].mutableCopy;
+    for (int i = 0; i < 4; i++) {
+        UIView *view = UIView.new;
+        view.backgroundColor = [self randomColor];
+        view.layer.borderColor = UIColor.blackColor.CGColor;
+        view.layer.borderWidth = 2;
+        [self.view addSubview:view];
+        [arr addObject:view];
+    }
+    
+    unsigned int type  = arc4random()%4;
+    switch (type) {
+        case 0:
+            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedSpacing:20 leadSpacing:5 tailSpacing:5];
+            [arr makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(@60);
+                make.height.equalTo(@60);
+            }];
+            break;
+        case 1:
+            [arr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedSpacing:20 leadSpacing:5 tailSpacing:5];
+            [arr makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(@0);
+                make.width.equalTo(@60);
+            }];
+            break;
+        case 2:
+            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedItemLength:30 leadSpacing:5 tailSpacing:5];
+            [arr makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(@60);
+                make.height.equalTo(@60);
+            }];
+            break;
+        case 3:
+            [arr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedItemLength:30 leadSpacing:5 tailSpacing:5];
+            [arr makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(@0);
+                make.width.equalTo(@60);
+            }];
+            break;
+            
+        default:
+            break;
+    }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (UIColor *)randomColor {
+    CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
+    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
+    return [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
 }
 
 @end
