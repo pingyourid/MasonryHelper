@@ -30,6 +30,7 @@
     }
     
     unsigned int type  = arc4random()%4;
+
     switch (type) {
         case 0:
             [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedSpacing:20 leadSpacing:5 tailSpacing:5];
@@ -46,14 +47,14 @@
             }];
             break;
         case 2:
-            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedItemLength:30 leadSpacing:5 tailSpacing:5];
+            [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizon withFixedItemLength:30 leadSpacing:50 tailSpacing:100];
             [arr makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(@60);
                 make.height.equalTo(@60);
             }];
             break;
         case 3:
-            [arr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedItemLength:30 leadSpacing:5 tailSpacing:5];
+            [arr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedItemLength:30 leadSpacing:200 tailSpacing:100];
             [arr makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(@0);
                 make.width.equalTo(@60);
