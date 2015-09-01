@@ -10,21 +10,21 @@
 
 @implementation NSArray (MASHelper)
 
-- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedSpacing:(CGFloat)paddingSpace leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing {
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedSpacing:(CGFloat)fixedSpacing leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing {
     if (self.count < 2) {
         NSAssert(self.count>1,@"views to distribute need to bigger than one");
         return;
     }
     
     MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
-    if (axisType == MASAxisTypeHorizon) {
+    if (axisType == MASAxisTypeHorizontal) {
         MAS_VIEW *prev;
         for (int i = 0; i < self.count; i++) {
             MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
                     make.width.equalTo(prev);
-                    make.left.equalTo(prev.mas_right).offset(paddingSpace);
+                    make.left.equalTo(prev.mas_right).offset(fixedSpacing);
                     if (i == (CGFloat)self.count - 1) {//last one
                         make.right.equalTo(tempSuperView).offset(-tailSpacing);
                     }
@@ -44,7 +44,7 @@
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
                     make.height.equalTo(prev);
-                    make.top.equalTo(prev.mas_bottom).offset(paddingSpace);
+                    make.top.equalTo(prev.mas_bottom).offset(fixedSpacing);
                     if (i == (CGFloat)self.count - 1) {//last one
                         make.bottom.equalTo(tempSuperView).offset(-tailSpacing);
                     }
@@ -59,21 +59,21 @@
     }
 }
 
-- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)itemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing {
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)fixedItemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing {
     if (self.count < 2) {
         NSAssert(self.count>1,@"views to distribute need to bigger than one");
         return;
     }
     
     MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
-    if (axisType == MASAxisTypeHorizon) {
+    if (axisType == MASAxisTypeHorizontal) {
         MAS_VIEW *prev;
         for (int i = 0; i < self.count; i++) {
             MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
-                    CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(itemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
-                    make.width.equalTo(@(itemLength));
+                    CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(fixedItemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
+                    make.width.equalTo(@(fixedItemLength));
                     if (i == (CGFloat)self.count - 1) {//last one
                         make.right.equalTo(tempSuperView).offset(-tailSpacing);
                     }
@@ -83,7 +83,7 @@
                 }
                 else {//first one
                     make.left.equalTo(tempSuperView).offset(leadSpacing);
-                    make.width.equalTo(@(itemLength));
+                    make.width.equalTo(@(fixedItemLength));
                 }
             }];
             prev = v;
@@ -95,8 +95,8 @@
             MAS_VIEW *v = [self objectAtIndex:i];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (prev) {
-                    CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(itemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
-                    make.height.equalTo(@(itemLength));
+                    CGFloat offset = (1-(i/((CGFloat)self.count-1)))*(fixedItemLength+leadSpacing)-i*tailSpacing/(((CGFloat)self.count-1));
+                    make.height.equalTo(@(fixedItemLength));
                     if (i == (CGFloat)self.count - 1) {//last one
                         make.bottom.equalTo(tempSuperView).offset(-tailSpacing);
                     }
@@ -106,7 +106,7 @@
                 }
                 else {//first one
                     make.top.equalTo(tempSuperView).offset(leadSpacing);
-                    make.height.equalTo(@(itemLength));
+                    make.height.equalTo(@(fixedItemLength));
                 }
             }];
             prev = v;
